@@ -12,17 +12,20 @@ namespace Task_4_Triangles
 
         public Point ThirdPoint { get; }
 
+        public Colors Color { get; }
+
         public double FirstSideLength { get; }
 
         public double SecondSideLength { get; }
 
         public double ThirdSideLength { get; }
 
-        public AbstractTriangle(Point firstPoint, Point secondPoint, Point thirdPoint)
+        public AbstractTriangle(Point firstPoint, Point secondPoint, Point thirdPoint, Colors color)
         {
             FirstPoint = firstPoint;
             SecondPoint = secondPoint;
             ThirdPoint = thirdPoint;
+            Color = color;
 
             FirstSideLength = FirstPoint.DistanceBetweenTwoPoints(SecondPoint);
             SecondSideLength = FirstPoint.DistanceBetweenTwoPoints(ThirdPoint);
@@ -37,6 +40,11 @@ namespace Task_4_Triangles
         private bool CheckingForTriangle()
         {
             return FirstSideLength + SecondSideLength > ThirdSideLength && FirstSideLength + ThirdSideLength > SecondSideLength && SecondSideLength + ThirdSideLength > FirstSideLength;
+        }
+
+        public double CalculateAreaOfTriangle()
+        {
+            return Math.Abs(((FirstPoint.X - ThirdPoint.X) * (SecondPoint.Y - ThirdPoint.Y) - (SecondPoint.X - ThirdPoint.X) * (FirstPoint.Y - ThirdPoint.Y)) / 2);
         }
     }
 }

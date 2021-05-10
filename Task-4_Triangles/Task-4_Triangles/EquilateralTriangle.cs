@@ -4,22 +4,18 @@ using System.Text;
 
 namespace Task_4_Triangles
 {
-    class EquilateralTriangle : AbstractTriangle, ICalculateAreaOfTriangle
+    class EquilateralTriangle : AbstractTriangle
     {
-        private const string _color = "Red";
+        public EquilateralTriangle(Point firstPoint, Point secondPoint, Point thirdPoint, Colors color) 
+                                  : base(firstPoint, secondPoint, thirdPoint, color) { }
 
-        public string Color { get; }
-
-        public EquilateralTriangle(Point firstPoint, Point secondPoint, Point thirdPoint) : base(firstPoint, secondPoint, thirdPoint) { }
-
-        private bool CheckingForEquilateralTriangle()
+        public static bool CheckingForEquilateralTriangle(Point firstPoint, Point secondPoint, Point thirdPoint)
         {
+            double FirstSideLength = firstPoint.DistanceBetweenTwoPoints(secondPoint);
+            double SecondSideLength = firstPoint.DistanceBetweenTwoPoints(thirdPoint);
+            double ThirdSideLength = secondPoint.DistanceBetweenTwoPoints(thirdPoint);
+
             return (FirstSideLength == SecondSideLength && ThirdSideLength == FirstSideLength);
-        }
-
-        public double CalculateAreaOfTriangle()
-        {
-            return (Math.Sqrt(3) * Math.Pow(FirstSideLength,2)) / 4;
         }
     }
 }

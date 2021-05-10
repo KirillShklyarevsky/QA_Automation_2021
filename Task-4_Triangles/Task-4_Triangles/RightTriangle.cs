@@ -4,36 +4,20 @@ using System.Text;
 
 namespace Task_4_Triangles
 {
-    class RightTriangle : AbstractTriangle, ICalculateAreaOfTriangle
+    class RightTriangle : AbstractTriangle
     {
-        private const string _color = "Green";
+        public RightTriangle(Point firstPoint, Point secondPoint, Point thirdPoint, Colors color) 
+                            : base(firstPoint, secondPoint, thirdPoint, color) { }
 
-        public string Color { get; }
-
-        public RightTriangle(Point firstPoint, Point secondPoint, Point thirdPoint) : base(firstPoint, secondPoint, thirdPoint) { }
-
-        private bool CheckingForRightTriangle()
+        public static bool CheckingForRightTriangle(Point firstPoint, Point secondPoint, Point thirdPoint)
         {
+            double FirstSideLength = firstPoint.DistanceBetweenTwoPoints(secondPoint);
+            double SecondSideLength = firstPoint.DistanceBetweenTwoPoints(thirdPoint);
+            double ThirdSideLength = secondPoint.DistanceBetweenTwoPoints(thirdPoint);
+
             return FirstSideLength * FirstSideLength + SecondSideLength * SecondSideLength == ThirdSideLength * ThirdSideLength ||
                    FirstSideLength * FirstSideLength + ThirdSideLength * ThirdSideLength == SecondSideLength * SecondSideLength ||
                    ThirdSideLength * ThirdSideLength + SecondSideLength * SecondSideLength == FirstSideLength * FirstSideLength;
-        }
-
-        public double CalculateAreaOfTriangle()
-        {
-            if (FirstSideLength > SecondSideLength && FirstSideLength > ThirdSideLength)
-            {
-                return SecondSideLength * ThirdSideLength / 2;
-            }
-
-            if (SecondSideLength > FirstSideLength && SecondSideLength > ThirdSideLength)
-            {
-                return FirstSideLength * ThirdSideLength / 2;
-            }
-            else
-            {
-                return FirstSideLength * SecondSideLength / 2;
-            }
         }
     }
 }

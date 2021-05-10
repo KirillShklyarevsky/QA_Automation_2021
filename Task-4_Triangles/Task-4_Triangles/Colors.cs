@@ -4,8 +4,11 @@ using System.Text;
 
 namespace Task_4_Triangles
 {
-    interface ICalculateAreaOfTriangle
+    public enum Colors
     {
-        double CalculateAreaOfTriangle();
+        Red,
+        Blue,
+        Green,
+        White
     }
 }
