@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Task_5_Cars
 {
     class Program
-    {   
+    {
         static void Main(string[] args)
         {
             List<Car> cars = new List<Car>() { new Car(Brand.Audi, "A8", BodyType.Hatchback, EngineType.Petrol, 50000, 8),
@@ -14,7 +14,6 @@ namespace Task_5_Cars
                                                new Car(Brand.Subaru, "Legacy", BodyType.Sedan, EngineType.Rotor, 35000, 2.5)};
 
             CarDealer carDealer = new CarDealer(cars);
-
 
             Func<Car, double> averagePrice = x => x.Price;
             Func<Car, double> averageEngineСapacity = x => x.EngineСapacity;

@@ -20,6 +20,11 @@ namespace Task_5_Cars
 
         public Car(Brand brand, string model, BodyType bodyType, EngineType engineType, double price, double engineCapacity)
         {
+            if (price < 0 || engineCapacity < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
             Brand = brand;
             Model = model;
             BodyType = bodyType;
