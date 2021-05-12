@@ -6,23 +6,37 @@ namespace Task_5_Cars
 {
     public class CarDealer
     {
-        public delegate double Averager(List<Car> cars);
-
-        List<Car> cars = new List<Car>();
+        public List<Car> Сars { get; set; }
 
         public CarDealer(List<Car> cars)
         {
-            this.cars = cars;
+            Сars = cars;
         }
 
-        public double GetAverage(Averager averager)
+        public double GetAverage(Func<Car, double> averager)
         {
-            return averager(cars);
+            double sum = 0;
+
+            foreach (Car car in Сars)
+            {
+                sum += averager(car);
+            }
+            return sum / Сars.Count;
         }
 
-        //public int GetCount()
-        //{
+        public int GetCount(Predicate<Car> isField)
+        {
+            int count = 0;
 
-        //}
+            foreach (Car car in Сars)
+            {
+                if (isField(car))
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
     }
 }
